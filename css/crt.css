@@ -1,0 +1,256 @@
+@import url('https://fonts.googleapis.com/css?family=VT323');
+
+:root {
+  --amber: #ffb000;
+  --dark-amber: #b87e00;
+  --bg-color: #111;
+  --scanline-color: rgba(0, 0, 0, 0.5);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-color);
+  color: var(--amber);
+  font-family: 'VT323', monospace;
+  font-size: 1.4rem;
+  overflow-x: hidden;
+  line-height: 1.4;
+}
+
+a {
+  color: var(--amber);
+  text-decoration: none;
+  border-bottom: 1px dotted var(--amber);
+}
+
+a:hover {
+  background-color: var(--amber);
+  color: var(--bg-color);
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.crt-container {
+  padding: 20px;
+  max-width: 900px;
+  margin: 0 auto;
+  position: relative;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+/* CRT Scanlines */
+.crt-container::before {
+  content: " ";
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+  z-index: 2;
+  background-size: 100% 2px, 3px 100%;
+  pointer-events: none;
+}
+
+/* CRT Flicker */
+@keyframes flicker {
+  0% { opacity: 0.97; }
+  5% { opacity: 0.95; }
+  10% { opacity: 0.9; }
+  15% { opacity: 0.95; }
+  20% { opacity: 0.99; }
+  25% { opacity: 0.95; }
+  30% { opacity: 0.9; }
+  35% { opacity: 0.96; }
+  40% { opacity: 0.98; }
+  45% { opacity: 0.95; }
+  50% { opacity: 0.99; }
+  55% { opacity: 0.93; }
+  60% { opacity: 0.9; }
+  65% { opacity: 0.96; }
+  70% { opacity: 1; }
+  75% { opacity: 0.97; }
+  80% { opacity: 0.95; }
+  85% { opacity: 0.92; }
+  90% { opacity: 0.96; }
+  95% { opacity: 0.99; }
+  100% { opacity: 0.94; }
+}
+
+.screen-content {
+  animation: flicker 0.15s infinite;
+  position: relative;
+  z-index: 1;
+}
+
+/* Typography and Layout */
+h1, h2, h3 {
+  font-weight: normal;
+  text-transform: uppercase;
+  margin-top: 40px;
+}
+
+h1 {
+  text-align: center;
+  border-bottom: 4px double var(--amber);
+  margin-top: 10px;
+  font-size: 3rem;
+  letter-spacing: 5px;
+}
+
+h2 {
+  border-bottom: 2px dashed var(--amber);
+  padding-bottom: 5px;
+  font-size: 2rem;
+}
+
+h3 {
+  font-size: 1.5rem;
+  margin-bottom: 5px;
+  margin-top: 20px;
+}
+
+.subheading {
+  font-style: italic;
+  margin-bottom: 10px;
+  opacity: 0.8;
+}
+
+/* Navigation Menu */
+nav.menu {
+  border: 1px solid var(--amber);
+  padding: 10px;
+  margin: 30px 0;
+}
+
+nav.menu ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 0;
+}
+
+nav.menu li {
+  margin: 5px 15px;
+  font-size: 1.3rem;
+}
+
+nav.menu a {
+  border: none;
+}
+
+nav.menu a::before {
+  content: "[";
+  margin-right: 5px;
+}
+
+nav.menu a::after {
+  content: "]";
+  margin-left: 5px;
+}
+
+/* Content Sections */
+.section {
+  margin-bottom: 50px;
+  opacity: 0.9;
+}
+
+.resume-item {
+  margin-bottom: 30px;
+  border-left: 2px solid var(--amber);
+  padding-left: 20px;
+  position: relative;
+}
+
+.resume-item::before {
+  content: "►";
+  position: absolute;
+  left: -8px;
+  top: 0;
+  background: var(--bg-color);
+  color: var(--amber);
+}
+
+.date-range {
+  float: right;
+  font-family: monospace;
+  background: var(--amber);
+  color: var(--bg-color);
+  padding: 0 5px;
+}
+
+.list-inline {
+  padding: 0;
+  list-style: none;
+}
+
+.list-inline li {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+/* Easter Egg */
+#easter-egg {
+  display: none;
+  border: 4px double var(--amber);
+  padding: 20px;
+  text-align: center;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  animation: flicker 0.1s infinite;
+}
+
+#easter-egg:target {
+  display: block;
+}
+
+.ascii-art {
+  white-space: pre;
+  font-size: 10px;
+  line-height: 10px;
+  overflow-x: auto;
+  font-family: monospace;
+  margin: 20px auto;
+  text-align: left;
+  display: inline-block;
+}
+
+.secret-message {
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  color: var(--bg-color);
+  background-color: var(--amber);
+  padding: 10px;
+}
+
+/* Mobile Adjustments */
+@media (max-width: 600px) {
+  body {
+      font-size: 1.1rem;
+  }
+
+  h1 {
+      font-size: 2rem;
+  }
+
+  .date-range {
+    float: none;
+    display: inline-block;
+    margin-bottom: 10px;
+  }
+
+  nav.menu ul {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  nav.menu li {
+      margin: 5px 0;
+  }
+}
