@@ -11,6 +11,17 @@
     <div class="crt-container">
         <div class="screen-content">
 
+            <div id="system-bar">
+                <div class="system-time" id="system-clock">00:00:00</div>
+                <div class="theme-switcher">
+                    THEME:
+                    <a onclick="setTheme('amber')">[AMBER]</a>
+                    <a onclick="setTheme('green')">[GREEN]</a>
+                    <a onclick="setTheme('white')">[WHITE]</a>
+                    <a onclick="setTheme('blue')">[BLUE]</a>
+                </div>
+            </div>
+
             <header>
                 <h1>Andrew C. Chan</h1>
                 <div style="text-align: center;">
@@ -148,6 +159,7 @@
         </div>
     </div>
     <canvas id="matrix-canvas"></canvas>
+    <script src="js/main.js"></script>
     <script>
         const konamiCode = [
             'ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown',
