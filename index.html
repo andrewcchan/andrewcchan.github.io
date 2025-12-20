@@ -147,6 +147,7 @@
 
         </div>
     </div>
+    <canvas id="matrix-canvas"></canvas>
     <script>
         const konamiCode = [
             'ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown',
@@ -154,13 +155,76 @@
             'b', 'a'
         ];
         let cursor = 0;
+
+        function startMatrixRain() {
+            const canvas = document.getElementById('matrix-canvas');
+            const ctx = canvas.getContext('2d');
+
+            canvas.style.display = 'block';
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+
+            const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789@#$%^&*()*&^%';
+            const fontSize = 16;
+            const columns = canvas.width / fontSize;
+
+            const drops = [];
+            for (let x = 0; x < columns; x++) {
+                drops[x] = 1;
+            }
+
+            let animationId;
+
+            function draw() {
+                ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+                ctx.fillStyle = '#0F0';
+                ctx.font = fontSize + 'px monospace';
+
+                for (let i = 0; i < drops.length; i++) {
+                    const text = letters.charAt(Math.floor(Math.random() * letters.length));
+                    ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+                    if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                        drops[i] = 0;
+                    }
+                    drops[i]++;
+                }
+                animationId = requestAnimationFrame(draw);
+            }
+
+            draw();
+
+            // Step 2: Change site color after 2 seconds
+            setTimeout(() => {
+                document.body.classList.add('matrix-mode');
+
+                // Reveal easter egg
+                const egg = document.getElementById('easter-egg');
+                egg.classList.add('found');
+                egg.scrollIntoView({ behavior: 'smooth' });
+
+                // Step 3: Fade out canvas
+                setTimeout(() => {
+                    canvas.style.transition = 'opacity 1s';
+                    canvas.style.opacity = '0';
+
+                    // Cleanup
+                    setTimeout(() => {
+                        cancelAnimationFrame(animationId);
+                        canvas.style.display = 'none';
+                        canvas.style.opacity = '1'; // Reset for next time
+                    }, 1000);
+                }, 1000);
+            }, 2000);
+        }
+
         document.addEventListener('keydown', (e) => {
             if (e.key === konamiCode[cursor]) {
                 cursor++;
                 if (cursor === konamiCode.length) {
-                    const egg = document.getElementById('easter-egg');
-                    egg.classList.add('found');
-                    egg.scrollIntoView({ behavior: 'smooth' });
+                    startMatrixRain();
                     cursor = 0;
                 }
             } else {
