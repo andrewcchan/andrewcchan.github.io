@@ -320,23 +320,6 @@ body.theme-blue {
     font-weight: bold;
 }
 
-.theme-switcher {
-    text-align: right;
-}
-
-.theme-switcher a {
-    margin-left: 10px;
-    cursor: pointer;
-    border: none;
-}
-
-.theme-switcher a:hover {
-    text-decoration: underline;
-    background-color: transparent;
-    color: var(--amber);
-    box-shadow: none;
-}
-
 /* Matrix Mode */
 body.matrix-mode {
   --amber: #00FF41;
