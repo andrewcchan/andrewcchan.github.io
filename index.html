@@ -215,6 +215,11 @@
                         cancelAnimationFrame(animationId);
                         canvas.style.display = 'none';
                         canvas.style.opacity = '1'; // Reset for next time
+
+                        // Revert to Amber after 5 seconds
+                        setTimeout(() => {
+                            document.body.classList.remove('matrix-mode');
+                        }, 5000);
                     }, 1000);
                 }, 1000);
             }, 2000);
