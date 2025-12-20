@@ -227,6 +227,9 @@
                         cancelAnimationFrame(animationId);
                         canvas.style.display = 'none';
                         canvas.style.opacity = '1'; // Reset for next time
+
+                        // Revert matrix mode after animation cleanup
+                        document.body.classList.remove('matrix-mode');
                     }, 1000);
                 }, 1000);
             }, 2000);

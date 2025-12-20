@@ -278,24 +278,6 @@ nav.menu a::after {
   }
 }
 
-/* Matrix Mode */
-body.matrix-mode {
-  --amber: #00FF41;
-  --dark-amber: #008F11;
-  --bg-color: #0D0208;
-}
-
-#matrix-canvas {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 9999;
-  pointer-events: none;
-  display: none;
-}
-
 /* THEMES */
 
 body.theme-amber {
@@ -353,4 +335,22 @@ body.theme-blue {
     background-color: transparent;
     color: var(--amber);
     box-shadow: none;
+}
+
+/* Matrix Mode */
+body.matrix-mode {
+  --amber: #00FF41;
+  --dark-amber: #008F11;
+  --bg-color: #0D0208;
+}
+
+#matrix-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  pointer-events: none;
+  display: none;
 }
