@@ -282,6 +282,7 @@ nav.menu a::after {
 body.matrix-mode {
   --amber: #00FF41;
   --dark-amber: #008F11;
+  --bg-color: #0D0208;
 }
 
 #matrix-canvas {
@@ -293,4 +294,63 @@ body.matrix-mode {
   z-index: 9999;
   pointer-events: none;
   display: none;
+}
+
+/* THEMES */
+
+body.theme-amber {
+  --amber: #ffb000;
+  --dark-amber: #b87e00;
+  --bg-color: #111;
+}
+
+body.theme-green {
+  --amber: #00FF41;
+  --dark-amber: #008F11;
+  --bg-color: #0D0208;
+}
+
+body.theme-white {
+  --amber: #FFFFFF;
+  --dark-amber: #AAAAAA;
+  --bg-color: #111;
+}
+
+body.theme-blue {
+  --amber: #00FFFF;
+  --dark-amber: #008888;
+  --bg-color: #000022;
+}
+
+/* System Bar */
+#system-bar {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 5px 0;
+    border-bottom: 1px dashed var(--amber);
+    margin-bottom: 20px;
+    font-size: 1rem;
+    width: 100%;
+}
+
+.system-time {
+    font-weight: bold;
+}
+
+.theme-switcher {
+    text-align: right;
+}
+
+.theme-switcher a {
+    margin-left: 10px;
+    cursor: pointer;
+    border: none;
+}
+
+.theme-switcher a:hover {
+    text-decoration: underline;
+    background-color: transparent;
+    color: var(--amber);
+    box-shadow: none;
 }
