@@ -101,6 +101,14 @@ h1 {
   letter-spacing: 5px;
 }
 
+#system-time {
+    text-align: left;
+    padding: 5px 0;
+    border-bottom: 1px dashed var(--amber);
+    margin-bottom: 20px;
+    font-size: 1rem;
+}
+
 h2 {
   border-bottom: 2px dashed var(--amber);
   padding-bottom: 5px;
