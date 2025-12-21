@@ -9,28 +9,16 @@
 </head>
 <body>
     <div class="crt-container">
-        <div class="screen-content">
-
-            <div id="system-bar">
-                <div class="system-time" id="system-clock">00:00:00</div>
-                <div class="theme-switcher">
-                    THEME:
-                    <a onclick="setTheme('amber')">[AMBER]</a>
-                    <a onclick="setTheme('green')">[GREEN]</a>
-                    <a onclick="setTheme('white')">[WHITE]</a>
-                    <a onclick="setTheme('blue')">[BLUE]</a>
-                </div>
-            </div>
+        <div id="boot-sequence"></div>
+        <div class="screen-content" style="display: none;">
 
             <header>
                 <h1>Andrew C. Chan</h1>
                 <div style="text-align: center;">
-                    <p class="subheading">Los Angeles, CA · <a href="mailto:ackchan@ucla.edu">ackchan@ucla.edu</a></p>
+                    <p class="subheading">Los Angeles, CA</p>
                     <p>Engineer, True Bruin, Blue Jay</p>
                     <ul class="list-inline">
                         <li><a href="https://www.linkedin.com/in/andrew-chan-45399b65/">[LINKEDIN]</a></li>
-                        <li><a href="https://github.com/andrewcchan">[GITHUB]</a></li>
-                        <li><a href="files/resume.pdf">[RESUME.PDF]</a></li>
                     </ul>
                 </div>
             </header>
@@ -50,9 +38,34 @@
                 <h2>Experience</h2>
 
                 <div class="resume-item">
+                    <h3>Senior Principal AI Software Engineer</h3>
+                    <div class="subheading"><a href="http://www.northropgrumman.com/">Northrop Grumman Corporate Office</a></div>
+                    <span class="date-range">September 2024 - Present</span>
+                    <p>Corporate AI Service Lead -- deploy a scalable enterprise GenAI LLM inference service for thousands of users via vLLM, Docker, API gateways. Enable AI acceleration of software engineering development, assess and integrate vendor tools, size GPU hardware, mature AI offering roadmap, deploy AI analytics via python and SQL on AWS and Azure.</p>
+                </div>
+
+
+                <div class="resume-item">
+                    <h3>Manager Software Engineering 2</h3>
+                    <div class="subheading"><a href="http://www.northropgrumman.com/">Northrop Grumman Aeronautics Systems</a></div>
+                    <span class="date-range">March 2023 - September 2024</span>
+                    <p>Technical lead — provide direction for data & AI/ML software services using Large Language Models (OpenAI API, Vector Databases, RAG), event streaming (Apache Kafka), graph data warehousing (Neo4j), and fullstack (Python, Node.js) technologies. Patent awarded in 2024.</p>
+                    <p>Product management — drive value creation, prioritize product roadmap, execute agile tasking, negotiate customer requirements, and grow large engineering teams to execute rapid software prototypes.</p>
+                    <p>Software Systems -- developed Cameo SysML Activity Diagrams, Use Case Diagrams, Internal Block Diagrams, custom profiles for large scale systems.</p>
+                </div>
+
+                <div class="resume-item">
+                    <h3>Principal AI Software Engineer</h3>
+                    <div class="subheading"><a href="http://www.northropgrumman.com/">Northrop Grumman Aeronautics Systems</a></div>
+                    <span class="date-range">September 2021 - March 2023</span>
+                    <p>Reinforcement Learning Agent — Developing a transformative, cloud native reinforcement learning system applicable to diverse simulation platforms. Utilizing AWS SageMaker for GPU training jobs, hyperparameter tuning, and endpoint inference, Apache Airflow for MLOps, and TensorFlow for deep learning.</p>
+                    <p>Knowledge Graph Analytics — Invented a graph data science platform using Node.js and Neo4j to analyze 400k model nodes and identify and reduce over 1K model based Cameo SysML systems engineering (MBSE) architecture defects for multi-billion dollar projects. Translated customer business needs into data science tasks for 5 software engineers,  secured funding, and defended model results at customer meetings.</p>
+                </div>
+
+                <div class="resume-item">
                     <h3>AI Software Engineer</h3>
                     <div class="subheading"><a href="http://www.northropgrumman.com/">Northrop Grumman Aeronautics Systems</a></div>
-                    <span class="date-range">October 2019 - Present</span>
+                    <span class="date-range">October 2019 - September 2021</span>
                     <p>Computer Vision — created an image classification pipeline for 4 terabytes of image data. Used regex parsing via Python for data preprocessing, Keras for scratch training of LeNet architectures and transfer learning using pretrained VGG, ResNet, and Inception networks.</p>
                     <p>Natural Language Processing — created a sentiment analysis system utilizing Scikit-learn. Used stop word reduction, data balancing, regex replacement.</p>
                     <p>Anomaly Detection — programmed IOT embedded sensors via Python and C++, wrote bash scripts for automated data collection, used Scikit-learn for anomaly detection.</p>
@@ -101,7 +114,7 @@
                     <h3>Johns Hopkins Whiting School of Engineering</h3>
                     <div class="subheading">Master of Science</div>
                     <p>Computer Science</p>
-                    <span class="date-range">August 2018 - Present</span>
+                    <span class="date-range">August 2018 - May 2022</span>
                 </div>
 
                 <div class="resume-item">
@@ -131,6 +144,9 @@
             <div id="awards" class="section">
                 <h2>Awards & Certifications</h2>
                 <div class="resume-item">
+                    <p><a href="https://patents.google.com/patent/US12038942B1/en?oq=12038942">MBSE to Graph Database Translator US Patent 12038942</a></p>
+                </div>
+                <div class="resume-item">
                     <p><a href="https://www.seasoasa.ucla.edu/wp-content/uploads/seasoasa/2016-Commencement-Awards-and-Honors.pdf">Engineering Achievement Award for Student Welfare--leadership in the UCLA IEEE Student Group</a></p>
                 </div>
             </div>
@@ -152,7 +168,7 @@
 
             <footer>
                 <p style="text-align: center; margin-top: 50px; font-size: 0.8rem; opacity: 0.5;">
-                    TERMINAL SESSION ID: JULES-SESSION-ID
+                    TERMINAL SESSION ID: 19990331-00:00:00
                     <br>
                     <span class="konami-hint">↑ ↑ ↓ ↓ ← → ← → B A</span>
                 </p>
@@ -161,7 +177,6 @@
         </div>
     </div>
     <canvas id="matrix-canvas"></canvas>
-    <script src="js/main.js"></script>
     <script>
         const konamiCode = [
             'ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown',
@@ -171,6 +186,64 @@
         let cursor = 0;
         let isMatrixMode = false;
 
+        // Boot Sequence
+        const bootMessages = [
+            "BIOS DATE 03/31/1999 00:00:00 VER 1.0.0",
+            "CPU: QUANTUM CORE i9",
+            "RAM: 4096 TB OK",
+            "INITIALIZING MODULES...",
+            "LOADING KERNEL...",
+            "MOUNTING FILESYSTEM...",
+            "ESTABLISHING SECURE CONNECTION...",
+            "ACCESS GRANTED.",
+            "WELCOME TO TERMINAL"
+        ];
+
+        async function runBootSequence() {
+            const container = document.getElementById('boot-sequence');
+
+            for (let i = 0; i < bootMessages.length; i++) {
+                const line = document.createElement('div');
+                line.className = 'boot-line';
+                line.textContent = bootMessages[i];
+                container.appendChild(line);
+
+                // Scroll to bottom
+                container.scrollTop = container.scrollHeight;
+
+                // Random delay between lines
+                await new Promise(r => setTimeout(r, Math.random() * 300 + 100));
+            }
+
+            // Add blinking cursor
+            const cursorLine = document.createElement('div');
+            cursorLine.className = 'boot-line';
+            cursorLine.innerHTML = '> PRESS ENTER OR TAP TO START <span class="cursor-blink"></span>';
+            container.appendChild(cursorLine);
+
+            // Wait for user input
+            await new Promise(resolve => {
+                function onInput(e) {
+                    if (e.type === 'click' || e.type === 'touchstart' || (e.type === 'keydown' && e.key === 'Enter')) {
+                        document.removeEventListener('keydown', onInput);
+                        document.removeEventListener('click', onInput);
+                        document.removeEventListener('touchstart', onInput);
+                        resolve();
+                    }
+                }
+                document.addEventListener('keydown', onInput);
+                document.addEventListener('click', onInput);
+                document.addEventListener('touchstart', onInput);
+            });
+
+            // Switch to main content
+            container.style.display = 'none';
+            document.querySelector('.screen-content').style.display = 'block';
+        }
+
+        // Start boot sequence on load
+        window.addEventListener('load', runBootSequence);
+
         function startMatrixRain(color) {
             const canvas = document.getElementById('matrix-canvas');
             const ctx = canvas.getContext('2d');
@@ -179,7 +252,7 @@
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
 
-            const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789@#$%^&*()*&^%';
+            const letters = 'アァカサタナハマヤャラワガザダバパイィキシチニヒミリヰギジヂビピウゥクスツヌフムユュルグズブヅプエェケセテネヘメレヱゲゼデベペオォコソトノホモヨョロヲゴゾドボポヴッン0123456789';
             const fontSize = 16;
             const columns = canvas.width / fontSize;
 
