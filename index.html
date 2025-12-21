@@ -11,6 +11,7 @@
     <div class="crt-container">
         <div id="boot-sequence"></div>
         <div class="screen-content" style="display: none;">
+            <div id="system-time">SYSTEM TIME: <span id="time-display"></span></div>
 
             <header>
                 <h1>Andrew C. Chan</h1>
@@ -189,8 +190,8 @@
         // Boot Sequence
         const bootMessages = [
             "BIOS DATE 03/31/1999 00:00:00 VER 1.0.0",
-            "CPU: QUANTUM CORE i9",
-            "RAM: 4096 TB OK",
+            "CPU: QUANTUM CORE WHITE RABBIT OK",
+            "RAM: 1999 TB OK",
             "INITIALIZING MODULES...",
             "LOADING KERNEL...",
             "MOUNTING FILESYSTEM...",
@@ -239,10 +240,22 @@
             // Switch to main content
             container.style.display = 'none';
             document.querySelector('.screen-content').style.display = 'block';
+            startTimeUpdate();
         }
 
         // Start boot sequence on load
         window.addEventListener('load', runBootSequence);
+
+        function updateTime() {
+            const now = new Date();
+            const timeString = now.toLocaleTimeString();
+            document.getElementById('time-display').textContent = timeString;
+        }
+
+        function startTimeUpdate() {
+            updateTime();
+            setInterval(updateTime, 1000);
+        }
 
         function startMatrixRain(color) {
             const canvas = document.getElementById('matrix-canvas');
