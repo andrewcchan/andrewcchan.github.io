@@ -9,18 +9,8 @@
 </head>
 <body>
     <div class="crt-container">
-        <div class="screen-content">
-
-            <div id="system-bar">
-                <div class="system-time" id="system-clock">00:00:00</div>
-                <div class="theme-switcher">
-                    THEME:
-                    <a onclick="setTheme('amber')">[AMBER]</a>
-                    <a onclick="setTheme('green')">[GREEN]</a>
-                    <a onclick="setTheme('white')">[WHITE]</a>
-                    <a onclick="setTheme('blue')">[BLUE]</a>
-                </div>
-            </div>
+        <div id="boot-sequence"></div>
+        <div class="screen-content" style="display: none;">
 
             <header>
                 <h1>Andrew C. Chan</h1>
@@ -161,7 +151,6 @@
         </div>
     </div>
     <canvas id="matrix-canvas"></canvas>
-    <script src="js/main.js"></script>
     <script>
         const konamiCode = [
             'ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown',
@@ -170,6 +159,52 @@
         ];
         let cursor = 0;
         let isMatrixMode = false;
+
+        // Boot Sequence
+        const bootMessages = [
+            "BIOS DATE 01/01/2024 12:00:00 VER 1.0.0",
+            "CPU: QUANTUM CORE i9",
+            "RAM: 4096 TB OK",
+            "INITIALIZING MODULES...",
+            "LOADING KERNEL...",
+            "MOUNTING FILESYSTEM...",
+            "ESTABLISHING SECURE CONNECTION...",
+            "ACCESS GRANTED.",
+            "WELCOME TO TERMINAL"
+        ];
+
+        async function runBootSequence() {
+            const container = document.getElementById('boot-sequence');
+
+            for (let i = 0; i < bootMessages.length; i++) {
+                const line = document.createElement('div');
+                line.className = 'boot-line';
+                line.textContent = bootMessages[i];
+                container.appendChild(line);
+
+                // Scroll to bottom
+                container.scrollTop = container.scrollHeight;
+
+                // Random delay between lines
+                await new Promise(r => setTimeout(r, Math.random() * 300 + 100));
+            }
+
+            // Add blinking cursor
+            const cursorLine = document.createElement('div');
+            cursorLine.className = 'boot-line';
+            cursorLine.innerHTML = '> <span class="cursor-blink"></span>';
+            container.appendChild(cursorLine);
+
+            // Wait a bit before showing main content
+            await new Promise(r => setTimeout(r, 800));
+
+            // Switch to main content
+            container.style.display = 'none';
+            document.querySelector('.screen-content').style.display = 'block';
+        }
+
+        // Start boot sequence on load
+        window.addEventListener('load', runBootSequence);
 
         function startMatrixRain(color) {
             const canvas = document.getElementById('matrix-canvas');
