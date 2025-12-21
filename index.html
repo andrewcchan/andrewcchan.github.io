@@ -192,11 +192,23 @@
             // Add blinking cursor
             const cursorLine = document.createElement('div');
             cursorLine.className = 'boot-line';
-            cursorLine.innerHTML = '> <span class="cursor-blink"></span>';
+            cursorLine.innerHTML = '> PRESS ENTER OR TAP TO START <span class="cursor-blink"></span>';
             container.appendChild(cursorLine);
 
-            // Wait a bit before showing main content
-            await new Promise(r => setTimeout(r, 800));
+            // Wait for user input
+            await new Promise(resolve => {
+                function onInput(e) {
+                    if (e.type === 'click' || e.type === 'touchstart' || (e.type === 'keydown' && e.key === 'Enter')) {
+                        document.removeEventListener('keydown', onInput);
+                        document.removeEventListener('click', onInput);
+                        document.removeEventListener('touchstart', onInput);
+                        resolve();
+                    }
+                }
+                document.addEventListener('keydown', onInput);
+                document.addEventListener('click', onInput);
+                document.addEventListener('touchstart', onInput);
+            });
 
             // Switch to main content
             container.style.display = 'none';
