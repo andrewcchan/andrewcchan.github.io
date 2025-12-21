@@ -294,3 +294,9 @@ body.matrix-mode {
   pointer-events: none;
   display: none;
 }
+
+.konami-hint {
+  font-size: 0.6rem;
+  opacity: 0.3;
+  letter-spacing: 2px;
+}

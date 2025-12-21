@@ -142,6 +142,8 @@
             <footer>
                 <p style="text-align: center; margin-top: 50px; font-size: 0.8rem; opacity: 0.5;">
                     TERMINAL SESSION ID: JULES-SESSION-ID
+                    <br>
+                    <span class="konami-hint">↑ ↑ ↓ ↓ ← → ← → B A</span>
                 </p>
             </footer>
 
@@ -155,8 +157,9 @@
             'b', 'a'
         ];
         let cursor = 0;
+        let isMatrixMode = false;
 
-        function startMatrixRain() {
+        function startMatrixRain(color) {
             const canvas = document.getElementById('matrix-canvas');
             const ctx = canvas.getContext('2d');
 
@@ -179,7 +182,7 @@
                 ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
                 ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-                ctx.fillStyle = '#0F0';
+                ctx.fillStyle = color;
                 ctx.font = fontSize + 'px monospace';
 
                 for (let i = 0; i < drops.length; i++) {
@@ -198,12 +201,14 @@
 
             // Step 2: Change site color after 2 seconds
             setTimeout(() => {
-                document.body.classList.add('matrix-mode');
+                document.body.classList.toggle('matrix-mode');
 
-                // Reveal easter egg
+                // Reveal easter egg only if enabling matrix mode
                 const egg = document.getElementById('easter-egg');
-                egg.classList.add('found');
-                egg.scrollIntoView({ behavior: 'smooth' });
+                if (document.body.classList.contains('matrix-mode')) {
+                    egg.classList.add('found');
+                    egg.scrollIntoView({ behavior: 'smooth' });
+                }
 
                 // Step 3: Fade out canvas
                 setTimeout(() => {
@@ -215,11 +220,7 @@
                         cancelAnimationFrame(animationId);
                         canvas.style.display = 'none';
                         canvas.style.opacity = '1'; // Reset for next time
-
-                        // Revert to Amber after 5 seconds
-                        setTimeout(() => {
-                            document.body.classList.remove('matrix-mode');
-                        }, 5000);
+                        canvas.style.transition = ''; // Remove transition
                     }, 1000);
                 }, 1000);
             }, 2000);
@@ -229,7 +230,9 @@
             if (e.key === konamiCode[cursor]) {
                 cursor++;
                 if (cursor === konamiCode.length) {
-                    startMatrixRain();
+                    const targetColor = isMatrixMode ? '#ffb000' : '#00FF41';
+                    startMatrixRain(targetColor);
+                    isMatrixMode = !isMatrixMode;
                     cursor = 0;
                 }
             } else {
