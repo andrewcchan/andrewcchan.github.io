@@ -165,6 +165,9 @@
     <canvas id="matrix-canvas"></canvas>
     <script>
         // Game Logic
+        let hfApiKey = ''; // PASTE YOUR HUGGINGFACE API KEY HERE
+        const hfModel = "mistralai/Mistral-7B-Instruct-v0.3";
+
         const gameData = {
             currentRoom: 'start',
             inventory: [],
@@ -210,10 +213,10 @@
 
             input.addEventListener('keydown', (e) => {
                 if (e.key === 'Enter') {
-                    const cmd = input.value.trim().toLowerCase();
+                    const rawInput = input.value.trim();
                     input.value = '';
-                    printGame(`> ${cmd}`);
-                    processCommand(cmd);
+                    printGame(`> ${rawInput}`);
+                    processCommand(rawInput);
                     // Keep focus
                     input.focus();
                     // Scroll to bottom
@@ -234,28 +237,91 @@
             out.scrollTop = out.scrollHeight;
         }
 
-        function look() {
+        async function callHuggingFace(systemContext, userPrompt) {
+            if (!hfApiKey) return null;
+
+            printGame("Thinking...");
+
+            try {
+                const response = await fetch(`https://api-inference.huggingface.co/models/${hfModel}`, {
+                    method: "POST",
+                    headers: {
+                        "Authorization": `Bearer ${hfApiKey}`,
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        inputs: `<s>[INST] You are a text adventure game master in a cyberpunk server room setting.
+Context: ${systemContext}
+User Action: ${userPrompt}
+Describe the result or scene vividly in 2-3 sentences. [/INST]`,
+                        parameters: { max_new_tokens: 150, temperature: 0.7 }
+                    })
+                });
+
+                if (!response.ok) {
+                    throw new Error(`API Error: ${response.status}`);
+                }
+
+                const result = await response.json();
+                // Remove the "Thinking..." line (last child)
+                const out = document.getElementById('game-output');
+                out.removeChild(out.lastChild);
+
+                let text = result[0].generated_text;
+                // Cleanup instruction tags if model returns them
+                text = text.split('[/INST]').pop().trim();
+                return text;
+            } catch (err) {
+                const out = document.getElementById('game-output');
+                out.removeChild(out.lastChild);
+                printGame(`[AI Connection Failed: ${err.message}]`);
+                return null;
+            }
+        }
+
+        async function look() {
             const room = gameData.rooms[gameData.currentRoom];
             printGame(`[${room.name}]`);
+
+            // Try AI description first
+            if (hfApiKey) {
+                const aiDesc = await callHuggingFace(
+                    `The player is looking around the ${room.name}. Base description: ${room.description}. Items visible: ${room.items ? room.items.join(', ') : 'none'}.`,
+                    "Look around."
+                );
+                if (aiDesc) {
+                    printGame(aiDesc);
+                    return; // AI handled it
+                }
+            }
+
+            // Fallback
             printGame(room.description);
-            // List items
             if (room.items && room.items.length > 0) {
                 printGame(`You see: ${room.items.join(', ')}`);
             }
         }
 
-        function processCommand(cmd) {
+        async function processCommand(cmd) {
             const parts = cmd.split(' ');
-            const action = parts[0];
-            const target = parts[1];
+            const action = parts[0].toLowerCase(); // Only lowercase command action
+            const target = parts.slice(1).join(' '); // Keep target case (for API keys)
             const room = gameData.rooms[gameData.currentRoom];
 
             switch(action) {
                 case 'help':
-                    printGame("COMMANDS: look, go [direction], take [item], inventory, exit");
+                    printGame("COMMANDS: look, go [direction], take [item], inventory, apikey [key], exit");
+                    break;
+                case 'apikey':
+                    if (target) {
+                        hfApiKey = target;
+                        printGame("API Key set. AI features enabled.");
+                    } else {
+                        printGame("Usage: apikey [your_huggingface_token]");
+                    }
                     break;
                 case 'look':
-                    look();
+                    await look();
                     break;
                 case 'go':
                 case 'walk':
@@ -296,7 +362,20 @@
                     document.getElementById('game-terminal').style.display = 'none';
                     break;
                 default:
-                    printGame("Unknown command.");
+                    // Try AI for unknown commands
+                    if (hfApiKey) {
+                        const aiResponse = await callHuggingFace(
+                            `Current Room: ${room.name}. Room Desc: ${room.description}. Inventory: ${gameData.inventory.join(', ')}.`,
+                            cmd
+                        );
+                        if (aiResponse) {
+                            printGame(aiResponse);
+                        } else {
+                            printGame("Unknown command.");
+                        }
+                    } else {
+                        printGame("Unknown command.");
+                    }
             }
         }
 
