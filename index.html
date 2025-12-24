@@ -32,8 +32,18 @@
                     <li><a href="#skills">SKILLS</a></li>
                     <li><a href="#interests">INTERESTS</a></li>
                     <li><a href="#awards">AWARDS</a></li>
+                    <li><a href="#" id="game-link">GAME</a></li>
                 </ul>
             </nav>
+
+            <div id="game-terminal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #000; z-index: 9999; padding: 20px; box-sizing: border-box; overflow: hidden; color: inherit; font-family: 'VT323', monospace;">
+                <div style="position: absolute; top: 20px; right: 20px; cursor: pointer;" id="close-game">[X]</div>
+                <div id="game-output" style="height: calc(100% - 60px); overflow-y: auto; margin-bottom: 20px; white-space: pre-wrap;"></div>
+                <div style="display: flex;">
+                    <span style="margin-right: 10px;">&gt;</span>
+                    <input type="text" id="game-input" style="background: transparent; border: none; color: inherit; font-family: inherit; font-size: inherit; width: 100%; outline: none;" autofocus>
+                </div>
+            </div>
 
             <div id="experience" class="section">
                 <h2>Experience</h2>
@@ -335,6 +345,77 @@
                 cursor = 0;
             }
         });
+
+        // Game Logic
+        const gameLink = document.getElementById('game-link');
+        const gameTerminal = document.getElementById('game-terminal');
+        const closeGame = document.getElementById('close-game');
+        const gameOutput = document.getElementById('game-output');
+        const gameInput = document.getElementById('game-input');
+
+        // Generate a random session ID or use existing
+        let sessionId = localStorage.getItem('gameSessionId');
+        if (!sessionId) {
+            sessionId = Math.random().toString(36).substring(2, 15);
+            localStorage.setItem('gameSessionId', sessionId);
+        }
+
+        gameLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            gameTerminal.style.display = 'block';
+            gameInput.focus();
+
+            // Initial greeting if empty
+            if (gameOutput.innerHTML === '') {
+                sendGameMessage('');
+            }
+        });
+
+        closeGame.addEventListener('click', () => {
+            gameTerminal.style.display = 'none';
+        });
+
+        gameInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                const message = gameInput.value;
+                if (message.trim() !== '') {
+                    appendOutput('> ' + message);
+                    sendGameMessage(message);
+                    gameInput.value = '';
+                }
+            }
+        });
+
+        function appendOutput(text) {
+            const line = document.createElement('div');
+            line.textContent = text;
+            gameOutput.appendChild(line);
+            gameOutput.scrollTop = gameOutput.scrollHeight;
+        }
+
+        async function sendGameMessage(message) {
+            try {
+                const response = await fetch('/api/chat', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        message: message,
+                        session_id: sessionId
+                    })
+                });
+
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+
+                const data = await response.json();
+                appendOutput(data.response);
+            } catch (error) {
+                appendOutput('Error: ' + error.message);
+            }
+        }
     </script>
 </body>
 </html>
