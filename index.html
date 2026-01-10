@@ -6,8 +6,10 @@
     <title>Andrew Chan - TERMINAL</title>
     <link href="https://fonts.googleapis.com/css?family=VT323" rel="stylesheet">
     <link href="css/crt.css" rel="stylesheet">
+    <link href="css/modern.css" rel="stylesheet">
 </head>
 <body>
+    <button id="theme-toggle">Switch to Modern Mode</button>
     <div class="crt-container">
         <div id="boot-sequence"></div>
         <div class="screen-content" style="display: none;">
@@ -19,7 +21,7 @@
                     <p class="subheading">Los Angeles, CA</p>
                     <p>Engineer, True Bruin, Blue Jay</p>
                     <ul class="list-inline">
-                        <li><a href="https://www.linkedin.com/in/andrew-chan-45399b65/">[LINKEDIN]</a></li>
+                        <li><a href="https://www.linkedin.com/in/andrew-chan-45399b65/">LINKEDIN</a></li>
                     </ul>
                 </div>
             </header>
@@ -185,6 +187,46 @@
         let cursor = 0;
         let isMatrixMode = false;
 
+        // Theme Toggle Logic
+        const themeToggle = document.getElementById('theme-toggle');
+
+        function setModernMode(enable) {
+            if (enable) {
+                document.body.classList.add('modern-mode');
+                themeToggle.textContent = 'Switch to Terminal Mode';
+                localStorage.setItem('theme_preference', 'modern');
+
+                // Ensure content is visible and boot sequence hidden
+                document.getElementById('boot-sequence').style.display = 'none';
+                document.querySelector('.screen-content').style.display = 'block';
+            } else {
+                document.body.classList.remove('modern-mode');
+                themeToggle.textContent = 'Switch to Modern Mode';
+                localStorage.setItem('theme_preference', 'terminal');
+            }
+        }
+
+        // Check preference on load
+        if (localStorage.getItem('theme_preference') === 'modern') {
+            setModernMode(true);
+        }
+
+        themeToggle.addEventListener('click', () => {
+            const isModern = document.body.classList.contains('modern-mode');
+            setModernMode(!isModern);
+            if (!isModern) {
+                 // If switching TO modern mode, we don't need to reload
+            } else {
+                // If switching back to terminal, reload to reset animations/state properly if needed,
+                // but for now simple toggle is fine.
+                // Actually, if we switch back to terminal, we might want to re-run boot sequence?
+                // No, that would be annoying. Just show content.
+                // However, we need to ensure boot sequence is hidden if we toggle back.
+                document.getElementById('boot-sequence').style.display = 'none';
+                document.querySelector('.screen-content').style.display = 'block';
+            }
+        });
+
         // Boot Sequence
         const bootMessages = [
             "BIOS DATE 03/31/1999 00:00:00 VER 1.0.0",
@@ -241,8 +283,12 @@
             startTimeUpdate();
         }
 
-        // Start boot sequence on load
-        window.addEventListener('load', runBootSequence);
+        // Start boot sequence on load ONLY if not in modern mode
+        window.addEventListener('load', () => {
+            if (!document.body.classList.contains('modern-mode')) {
+                runBootSequence();
+            }
+        });
 
         function updateTime() {
             const now = new Date();

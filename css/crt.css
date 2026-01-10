@@ -217,6 +217,15 @@ nav.menu a::after {
   margin-right: 10px;
 }
 
+/* Add brackets for inline list links in CRT mode */
+.list-inline li a::before {
+  content: "[";
+}
+
+.list-inline li a::after {
+  content: "]";
+}
+
 /* Easter Egg */
 #easter-egg {
   display: none;
