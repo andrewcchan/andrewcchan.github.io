@@ -1,0 +1,277 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@400;600&display=swap');
+
+/* Star Wars / Galactic Mode Overrides */
+body.starwars-mode {
+    --bg-color: #0b0d10;
+    --text-color: #a0c0d0;
+    --accent-color: #4bd5ee; /* Datapad Blue */
+    --panel-bg: rgba(16, 24, 32, 0.9);
+    --border-color: #4bd5ee;
+
+    background-color: var(--bg-color);
+    background-image: radial-gradient(circle at 50% 50%, #1a202c 0%, #0b0d10 100%);
+    color: var(--text-color);
+    font-family: 'Rajdhani', sans-serif;
+    line-height: 1.5;
+    text-shadow: 0 0 5px rgba(75, 213, 238, 0.3);
+}
+
+/* Hide CRT effects */
+body.starwars-mode .crt-container::before {
+    display: none;
+}
+
+body.starwars-mode .screen-content {
+    animation: none;
+}
+
+/* Layout adjustments */
+body.starwars-mode .crt-container {
+    max-width: 1000px;
+    padding: 20px;
+    background-color: transparent;
+    box-shadow: none;
+    min-height: auto;
+    border: 1px solid rgba(75, 213, 238, 0.2);
+    border-radius: 10px;
+    margin-top: 60px; /* Space for top bar */
+}
+
+/* Header */
+body.starwars-mode header {
+    text-align: center;
+    margin-bottom: 40px;
+    border-bottom: 2px solid var(--accent-color);
+    padding-bottom: 20px;
+    position: relative;
+}
+
+body.starwars-mode header::before {
+    content: "GALACTIC DATANET TERMINAL";
+    position: absolute;
+    top: -30px;
+    left: 0;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.8rem;
+    color: var(--accent-color);
+    opacity: 0.7;
+    letter-spacing: 2px;
+}
+
+body.starwars-mode h1 {
+    font-family: 'Orbitron', sans-serif;
+    color: var(--accent-color);
+    border-bottom: none;
+    letter-spacing: 4px;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-top: 0;
+    font-size: 3rem;
+    text-shadow: 0 0 10px var(--accent-color);
+}
+
+body.starwars-mode .subheading {
+    font-style: normal;
+    color: #fff;
+    margin-bottom: 5px;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.2rem;
+}
+
+/* Navigation */
+body.starwars-mode nav.menu {
+    position: static;
+    background: var(--panel-bg);
+    border: 1px solid var(--accent-color);
+    box-shadow: 0 0 15px rgba(75, 213, 238, 0.2);
+    border-radius: 0;
+    padding: 10px;
+    margin-bottom: 40px;
+    clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
+}
+
+body.starwars-mode nav.menu ul {
+    justify-content: center;
+    gap: 20px;
+}
+
+body.starwars-mode nav.menu li {
+    margin: 0;
+}
+
+body.starwars-mode nav.menu a {
+    border: 1px solid transparent;
+    color: var(--accent-color);
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700;
+    padding: 8px 20px;
+    border-radius: 0;
+    background-color: rgba(75, 213, 238, 0.1);
+    text-shadow: none;
+    box-shadow: none;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+}
+
+body.starwars-mode nav.menu a:hover {
+    background-color: var(--accent-color);
+    color: #000;
+    box-shadow: 0 0 20px var(--accent-color);
+    text-decoration: none;
+    border-color: #fff;
+}
+
+body.starwars-mode nav.menu a::before,
+body.starwars-mode nav.menu a::after {
+    display: none;
+}
+
+/* Sections */
+body.starwars-mode .section {
+    background: var(--panel-bg);
+    padding: 30px;
+    border: 1px solid rgba(75, 213, 238, 0.3);
+    border-left: 5px solid var(--accent-color);
+    margin-bottom: 30px;
+    opacity: 1;
+    position: relative;
+}
+
+body.starwars-mode .section::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 20px;
+    height: 20px;
+    border-bottom: 2px solid var(--accent-color);
+    border-right: 2px solid var(--accent-color);
+}
+
+body.starwars-mode h2 {
+    border: none;
+    border-bottom: 1px solid var(--accent-color);
+    color: #fff;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2rem;
+    margin-top: 0;
+    padding-bottom: 10px;
+    margin-bottom: 25px;
+    text-transform: uppercase;
+    text-shadow: 0 0 5px var(--accent-color);
+}
+
+body.starwars-mode h3 {
+    font-family: 'Rajdhani', sans-serif;
+    color: var(--accent-color);
+    font-weight: 700;
+    font-size: 1.5rem;
+    margin-top: 0;
+    text-transform: uppercase;
+    text-shadow: none;
+}
+
+/* Resume Items */
+body.starwars-mode .resume-item {
+    border-left: none;
+    padding-left: 0;
+    margin-bottom: 40px;
+    border-bottom: 1px dashed rgba(75, 213, 238, 0.2);
+    padding-bottom: 20px;
+}
+
+body.starwars-mode .resume-item::before {
+    display: none;
+}
+
+body.starwars-mode .resume-item:last-child {
+    margin-bottom: 0;
+    border-bottom: none;
+}
+
+body.starwars-mode .date-range {
+    float: right;
+    display: block;
+    background: var(--accent-color);
+    color: #000;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.8rem;
+    padding: 2px 8px;
+    font-weight: 700;
+    clip-path: polygon(5px 0, 100% 0, 100% 100%, 0 100%);
+}
+
+body.starwars-mode a {
+    color: var(--accent-color);
+    border-bottom: none;
+    text-shadow: none;
+}
+
+body.starwars-mode a:hover {
+    text-decoration: none;
+    background-color: transparent;
+    color: #fff;
+    text-shadow: 0 0 8px var(--accent-color);
+}
+
+/* Toggle Button */
+#theme-toggle {
+    /* Base styles already in index.html, these are overrides */
+}
+
+body.starwars-mode #theme-toggle {
+    background: rgba(0, 0, 0, 0.8);
+    color: var(--accent-color);
+    border: 1px solid var(--accent-color);
+    font-family: 'Orbitron', sans-serif;
+    border-radius: 0;
+    font-size: 0.8rem;
+    font-weight: 700;
+    box-shadow: 0 0 10px rgba(75, 213, 238, 0.2);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 10px 20px;
+}
+
+body.starwars-mode #theme-toggle:hover {
+    background: var(--accent-color);
+    color: #000;
+    box-shadow: 0 0 20px var(--accent-color);
+}
+
+/* Hide decoration brackets */
+body.starwars-mode nav.menu a::before,
+body.starwars-mode nav.menu a::after,
+body.starwars-mode .list-inline li a::before,
+body.starwars-mode .list-inline li a::after {
+    display: none;
+}
+
+/* System elements to hide */
+body.starwars-mode #system-time,
+body.starwars-mode #boot-sequence,
+body.starwars-mode #easter-egg,
+body.starwars-mode footer p {
+    display: none !important;
+}
+
+body.starwars-mode #matrix-canvas {
+    display: none !important;
+}
+
+/* Mobile Adjustments */
+@media (max-width: 600px) {
+    body.starwars-mode {
+        font-size: 1rem;
+    }
+
+    body.starwars-mode h1 {
+        font-size: 2rem;
+    }
+
+    body.starwars-mode .date-range {
+        float: none;
+        display: inline-block;
+        margin-bottom: 5px;
+    }
+}

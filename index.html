@@ -6,10 +6,10 @@
     <title>Andrew Chan - TERMINAL</title>
     <link href="https://fonts.googleapis.com/css?family=VT323" rel="stylesheet">
     <link href="css/crt.css" rel="stylesheet">
-    <link href="css/modern.css" rel="stylesheet">
+    <link href="css/starwars.css" rel="stylesheet">
 </head>
 <body>
-    <button id="theme-toggle">Switch to Modern Mode</button>
+    <button id="theme-toggle">Switch to Galactic Mode</button>
     <div class="crt-container">
         <div id="boot-sequence"></div>
         <div class="screen-content" style="display: none;">
@@ -190,32 +190,32 @@
         // Theme Toggle Logic
         const themeToggle = document.getElementById('theme-toggle');
 
-        function setModernMode(enable) {
+        function setStarWarsMode(enable) {
             if (enable) {
-                document.body.classList.add('modern-mode');
+                document.body.classList.add('starwars-mode');
                 themeToggle.textContent = 'Switch to Terminal Mode';
-                localStorage.setItem('theme_preference', 'modern');
+                localStorage.setItem('theme_preference', 'starwars');
 
                 // Ensure content is visible and boot sequence hidden
                 document.getElementById('boot-sequence').style.display = 'none';
                 document.querySelector('.screen-content').style.display = 'block';
             } else {
-                document.body.classList.remove('modern-mode');
-                themeToggle.textContent = 'Switch to Modern Mode';
+                document.body.classList.remove('starwars-mode');
+                themeToggle.textContent = 'Switch to Galactic Mode';
                 localStorage.setItem('theme_preference', 'terminal');
             }
         }
 
         // Check preference on load
-        if (localStorage.getItem('theme_preference') === 'modern') {
-            setModernMode(true);
+        if (localStorage.getItem('theme_preference') === 'starwars') {
+            setStarWarsMode(true);
         }
 
         themeToggle.addEventListener('click', () => {
-            const isModern = document.body.classList.contains('modern-mode');
-            setModernMode(!isModern);
-            if (!isModern) {
-                 // If switching TO modern mode, we don't need to reload
+            const isStarWars = document.body.classList.contains('starwars-mode');
+            setStarWarsMode(!isStarWars);
+            if (!isStarWars) {
+                 // If switching TO starwars mode, we don't need to reload
             } else {
                 // If switching back to terminal, reload to reset animations/state properly if needed,
                 // but for now simple toggle is fine.
@@ -283,9 +283,9 @@
             startTimeUpdate();
         }
 
-        // Start boot sequence on load ONLY if not in modern mode
+        // Start boot sequence on load ONLY if not in starwars mode
         window.addEventListener('load', () => {
-            if (!document.body.classList.contains('modern-mode')) {
+            if (!document.body.classList.contains('starwars-mode')) {
                 runBootSequence();
             }
         });
