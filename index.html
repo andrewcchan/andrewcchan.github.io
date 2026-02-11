@@ -3,251 +3,185 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Andrew Chan - TERMINAL</title>
-    <link href="https://fonts.googleapis.com/css?family=VT323" rel="stylesheet">
-    <link href="css/crt.css" rel="stylesheet">
+    <title>Andrew Chan - Windows 95</title>
+    <link href="css/win95.css" rel="stylesheet">
 </head>
 <body>
-    <div class="crt-container">
-        <div id="boot-sequence"></div>
-        <div class="screen-content" style="display: none;">
-            <div id="system-time">SYSTEM TIME: <span id="time-display"></span></div>
+    <div class="desktop">
+        <div class="window">
+            <div class="title-bar">
+                <div class="title-bar-text">Andrew Chan - Resume</div>
+                <div class="title-bar-controls">
+                    <button aria-label="Minimize">_</button>
+                    <button aria-label="Maximize">□</button>
+                    <button aria-label="Close">X</button>
+                </div>
+            </div>
+            <div class="window-body">
+                <header>
+                    <h1>Andrew C. Chan</h1>
+                    <div style="text-align: center;">
+                        <p class="subheading">Los Angeles, CA</p>
+                        <p>Engineer, True Bruin, Blue Jay</p>
+                        <ul class="list-inline">
+                            <li><a href="https://www.linkedin.com/in/andrew-chan-45399b65/">[LINKEDIN]</a></li>
+                        </ul>
+                    </div>
+                </header>
 
-            <header>
-                <h1>Andrew C. Chan</h1>
-                <div style="text-align: center;">
-                    <p class="subheading">Los Angeles, CA</p>
-                    <p>Engineer, True Bruin, Blue Jay</p>
-                    <ul class="list-inline">
-                        <li><a href="https://www.linkedin.com/in/andrew-chan-45399b65/">[LINKEDIN]</a></li>
+                <nav class="menu">
+                    <ul>
+                        <li><a href="#experience">EXPERIENCE</a></li>
+                        <li><a href="#personalProjects">PROJECTS</a></li>
+                        <li><a href="#education">EDUCATION</a></li>
+                        <li><a href="#skills">SKILLS</a></li>
+                        <li><a href="#interests">INTERESTS</a></li>
+                        <li><a href="#awards">AWARDS</a></li>
                     </ul>
-                </div>
-            </header>
+                </nav>
 
-            <nav class="menu">
-                <ul>
-                    <li><a href="#experience">EXPERIENCE</a></li>
-                    <li><a href="#personalProjects">PROJECTS</a></li>
-                    <li><a href="#education">EDUCATION</a></li>
-                    <li><a href="#skills">SKILLS</a></li>
-                    <li><a href="#interests">INTERESTS</a></li>
-                    <li><a href="#awards">AWARDS</a></li>
-                </ul>
-            </nav>
+                <div id="experience" class="section">
+                    <h2>Experience</h2>
 
-            <div id="experience" class="section">
-                <h2>Experience</h2>
-
-                <div class="resume-item">
-                    <h3>Senior Principal AI Software Engineer</h3>
-                    <div class="subheading"><a href="http://www.northropgrumman.com/">Northrop Grumman Corporate Office</a></div>
-                    <span class="date-range">September 2024 - Present</span>
-                    <p>Corporate AI Service Lead -- deploy a scalable enterprise GenAI LLM inference service for thousands of users via vLLM, Docker, API gateways. Enable AI acceleration of software engineering development, assess and integrate vendor tools, size GPU hardware, mature AI offering roadmap, deploy AI analytics via python and SQL on AWS and Azure.</p>
-                </div>
+                    <div class="resume-item">
+                        <h3>Senior Principal AI Software Engineer</h3>
+                        <div class="subheading"><a href="http://www.northropgrumman.com/">Northrop Grumman Corporate Office</a></div>
+                        <span class="date-range">September 2024 - Present</span>
+                        <p>Corporate AI Service Lead -- deploy a scalable enterprise GenAI LLM inference service for thousands of users via vLLM, Docker, API gateways. Enable AI acceleration of software engineering development, assess and integrate vendor tools, size GPU hardware, mature AI offering roadmap, deploy AI analytics via python and SQL on AWS and Azure.</p>
+                    </div>
 
 
-                <div class="resume-item">
-                    <h3>Manager Software Engineering 2</h3>
-                    <div class="subheading"><a href="http://www.northropgrumman.com/">Northrop Grumman Aeronautics Systems</a></div>
-                    <span class="date-range">March 2023 - September 2024</span>
-                    <p>Technical lead — provide direction for data & AI/ML software services using Large Language Models (OpenAI API, Vector Databases, RAG), event streaming (Apache Kafka), graph data warehousing (Neo4j), and fullstack (Python, Node.js) technologies. Patent awarded in 2024.</p>
-                    <p>Product management — drive value creation, prioritize product roadmap, execute agile tasking, negotiate customer requirements, and grow large engineering teams to execute rapid software prototypes.</p>
-                    <p>Software Systems -- developed Cameo SysML Activity Diagrams, Use Case Diagrams, Internal Block Diagrams, custom profiles for large scale systems.</p>
-                </div>
+                    <div class="resume-item">
+                        <h3>Manager Software Engineering 2</h3>
+                        <div class="subheading"><a href="http://www.northropgrumman.com/">Northrop Grumman Aeronautics Systems</a></div>
+                        <span class="date-range">March 2023 - September 2024</span>
+                        <p>Technical lead — provide direction for data & AI/ML software services using Large Language Models (OpenAI API, Vector Databases, RAG), event streaming (Apache Kafka), graph data warehousing (Neo4j), and fullstack (Python, Node.js) technologies. Patent awarded in 2024.</p>
+                        <p>Product management — drive value creation, prioritize product roadmap, execute agile tasking, negotiate customer requirements, and grow large engineering teams to execute rapid software prototypes.</p>
+                        <p>Software Systems -- developed Cameo SysML Activity Diagrams, Use Case Diagrams, Internal Block Diagrams, custom profiles for large scale systems.</p>
+                    </div>
 
-                <div class="resume-item">
-                    <h3>Principal AI Software Engineer</h3>
-                    <div class="subheading"><a href="http://www.northropgrumman.com/">Northrop Grumman Aeronautics Systems</a></div>
-                    <span class="date-range">September 2021 - March 2023</span>
-                    <p>Reinforcement Learning Agent — Developing a transformative, cloud native reinforcement learning system applicable to diverse simulation platforms. Utilizing AWS SageMaker for GPU training jobs, hyperparameter tuning, and endpoint inference, Apache Airflow for MLOps, and TensorFlow for deep learning.</p>
-                    <p>Knowledge Graph Analytics — Invented a graph data science platform using Node.js and Neo4j to analyze 400k model nodes and identify and reduce over 1K model based Cameo SysML systems engineering (MBSE) architecture defects for multi-billion dollar projects. Translated customer business needs into data science tasks for 5 software engineers,  secured funding, and defended model results at customer meetings.</p>
-                </div>
+                    <div class="resume-item">
+                        <h3>Principal AI Software Engineer</h3>
+                        <div class="subheading"><a href="http://www.northropgrumman.com/">Northrop Grumman Aeronautics Systems</a></div>
+                        <span class="date-range">September 2021 - March 2023</span>
+                        <p>Reinforcement Learning Agent — Developing a transformative, cloud native reinforcement learning system applicable to diverse simulation platforms. Utilizing AWS SageMaker for GPU training jobs, hyperparameter tuning, and endpoint inference, Apache Airflow for MLOps, and TensorFlow for deep learning.</p>
+                        <p>Knowledge Graph Analytics — Invented a graph data science platform using Node.js and Neo4j to analyze 400k model nodes and identify and reduce over 1K model based Cameo SysML systems engineering (MBSE) architecture defects for multi-billion dollar projects. Translated customer business needs into data science tasks for 5 software engineers,  secured funding, and defended model results at customer meetings.</p>
+                    </div>
 
-                <div class="resume-item">
-                    <h3>AI Software Engineer</h3>
-                    <div class="subheading"><a href="http://www.northropgrumman.com/">Northrop Grumman Aeronautics Systems</a></div>
-                    <span class="date-range">October 2019 - September 2021</span>
-                    <p>Computer Vision — created an image classification pipeline for 4 terabytes of image data. Used regex parsing via Python for data preprocessing, Keras for scratch training of LeNet architectures and transfer learning using pretrained VGG, ResNet, and Inception networks.</p>
-                    <p>Natural Language Processing — created a sentiment analysis system utilizing Scikit-learn. Used stop word reduction, data balancing, regex replacement.</p>
-                    <p>Anomaly Detection — programmed IOT embedded sensors via Python and C++, wrote bash scripts for automated data collection, used Scikit-learn for anomaly detection.</p>
-                </div>
+                    <div class="resume-item">
+                        <h3>AI Software Engineer</h3>
+                        <div class="subheading"><a href="http://www.northropgrumman.com/">Northrop Grumman Aeronautics Systems</a></div>
+                        <span class="date-range">October 2019 - September 2021</span>
+                        <p>Computer Vision — created an image classification pipeline for 4 terabytes of image data. Used regex parsing via Python for data preprocessing, Keras for scratch training of LeNet architectures and transfer learning using pretrained VGG, ResNet, and Inception networks.</p>
+                        <p>Natural Language Processing — created a sentiment analysis system utilizing Scikit-learn. Used stop word reduction, data balancing, regex replacement.</p>
+                        <p>Anomaly Detection — programmed IOT embedded sensors via Python and C++, wrote bash scripts for automated data collection, used Scikit-learn for anomaly detection.</p>
+                    </div>
 
-                <div class="resume-item">
-                    <h3>Systems Engineer</h3>
-                    <div class="subheading"><a href="http://www.northropgrumman.com/">Northrop Grumman Aerospace Systems</a></div>
-                    <span class="date-range">October 2016 - October 2019</span>
-                    <p>Developing a predictive analytics system utilizing IOT sensors and machine learning. Programmed Java plugins to connect a System Architecture Modeling Tool via OpenAPI calls. Developed descriptive architectures in UML, SysML, and UPDM to manage complex systems.</p>
-                </div>
+                    <div class="resume-item">
+                        <h3>Systems Engineer</h3>
+                        <div class="subheading"><a href="http://www.northropgrumman.com/">Northrop Grumman Aerospace Systems</a></div>
+                        <span class="date-range">October 2016 - October 2019</span>
+                        <p>Developing a predictive analytics system utilizing IOT sensors and machine learning. Programmed Java plugins to connect a System Architecture Modeling Tool via OpenAPI calls. Developed descriptive architectures in UML, SysML, and UPDM to manage complex systems.</p>
+                    </div>
 
-                <div class="resume-item">
-                    <h3>Automatic Test Equipment Intern</h3>
-                    <div class="subheading"><a href="http://www.bostonscientific.com/en-US/about-us/core-businesses/neuromodulation.html">Boston Scientific Neuromodulation</a></div>
-                    <span class="date-range">June 2015 - September 2015</span>
-                    <p>Programmed in LabVIEW to control NI DAQ cards to determine resonant frequencies of a wireless charger. Wrote hardware validation procedures.</p>
+                    <div class="resume-item">
+                        <h3>Automatic Test Equipment Intern</h3>
+                        <div class="subheading"><a href="http://www.bostonscientific.com/en-US/about-us/core-businesses/neuromodulation.html">Boston Scientific Neuromodulation</a></div>
+                        <span class="date-range">June 2015 - September 2015</span>
+                        <p>Programmed in LabVIEW to control NI DAQ cards to determine resonant frequencies of a wireless charger. Wrote hardware validation procedures.</p>
+                    </div>
+
+                    <div class="resume-item">
+                        <h3>Distribution Standards Engineering Trainee</h3>
+                        <div class="subheading"><a href="https://www.sce.com/">Southern California Edison</a></div>
+                        <span class="date-range">June 2014 - August 2014</span>
+                        <p>Wrote standards procedures for composite pole pilots and updated various existing distribution standards procedures.</p>
+                    </div>
                 </div>
 
-                <div class="resume-item">
-                    <h3>Distribution Standards Engineering Trainee</h3>
-                    <div class="subheading"><a href="https://www.sce.com/">Southern California Edison</a></div>
-                    <span class="date-range">June 2014 - August 2014</span>
-                    <p>Wrote standards procedures for composite pole pilots and updated various existing distribution standards procedures.</p>
+                <div id="personalProjects" class="section">
+                    <h2>Personal Projects</h2>
+
+                    <div class="resume-item">
+                        <h3><a href="https://stock-return-history.herokuapp.com/">Historical Stock Calculator</a></h3>
+                        <p>Created a stock calculator that uses HTTP calls to take data from the Alphavantage database and calculate a linear regression and stock return.</p>
+                    </div>
+
+                    <div class="resume-item">
+                        <h3><a href="https://chan-mobilenet.glitch.me/">Mobilenet Image Classifier</a></h3>
+                        <p>Created a image classifier via Tensorflow.js and Mobilenet.</p>
+                    </div>
                 </div>
+
+                <div id="education" class="section">
+                    <h2>Education</h2>
+
+                    <div class="resume-item">
+                        <h3>Johns Hopkins Whiting School of Engineering</h3>
+                        <div class="subheading">Master of Science</div>
+                        <p>Computer Science</p>
+                        <span class="date-range">August 2018 - May 2022</span>
+                    </div>
+
+                    <div class="resume-item">
+                        <h3>University of California Los Angeles</h3>
+                        <div class="subheading">Bachelor of Science</div>
+                        <p>Electrical Engineering - Computer Science Technical Breadth</p>
+                        <p>GPA: 3.361</p>
+                        <span class="date-range">September 2012 - June 2016</span>
+                    </div>
+                </div>
+
+                <div id="skills" class="section">
+                    <h2>Skills</h2>
+                    <div class="resume-item">
+                        <h3>Programming Languages & Tools</h3>
+                        <p>Python, Java, C++, JavaScript, HTML/CSS, Sklearn, UML, SysML, UPDM, git</p>
+                    </div>
+                </div>
+
+                <div id="interests" class="section">
+                    <h2>Interests</h2>
+                    <div class="resume-item">
+                        <p>Machine Learning, DIY Electronics, Foodie Adventures</p>
+                    </div>
+                </div>
+
+                <div id="awards" class="section">
+                    <h2>Awards & Certifications</h2>
+                    <div class="resume-item">
+                        <p><a href="https://patents.google.com/patent/US12038942B1/en?oq=12038942">MBSE to Graph Database Translator US Patent 12038942</a></p>
+                    </div>
+                    <div class="resume-item">
+                        <p><a href="https://www.seasoasa.ucla.edu/wp-content/uploads/seasoasa/2016-Commencement-Awards-and-Honors.pdf">Engineering Achievement Award for Student Welfare--leadership in the UCLA IEEE Student Group</a></p>
+                    </div>
+                </div>
+
+                <footer>
+                   <p>&copy; 2024 Andrew Chan. All rights reserved.</p>
+                </footer>
+
             </div>
+        </div>
 
-            <div id="personalProjects" class="section">
-                <h2>Personal Projects</h2>
-
-                <div class="resume-item">
-                    <h3><a href="https://stock-return-history.herokuapp.com/">Historical Stock Calculator</a></h3>
-                    <p>Created a stock calculator that uses HTTP calls to take data from the Alphavantage database and calculate a linear regression and stock return.</p>
-                </div>
-
-                <div class="resume-item">
-                    <h3><a href="https://chan-mobilenet.glitch.me/">Mobilenet Image Classifier</a></h3>
-                    <p>Created a image classifier via Tensorflow.js and Mobilenet.</p>
-                </div>
+        <div class="taskbar">
+            <div class="start-button">
+               <span style="font-weight:900; margin-right:2px;">❖</span> Start
             </div>
-
-            <div id="education" class="section">
-                <h2>Education</h2>
-
-                <div class="resume-item">
-                    <h3>Johns Hopkins Whiting School of Engineering</h3>
-                    <div class="subheading">Master of Science</div>
-                    <p>Computer Science</p>
-                    <span class="date-range">August 2018 - May 2022</span>
-                </div>
-
-                <div class="resume-item">
-                    <h3>University of California Los Angeles</h3>
-                    <div class="subheading">Bachelor of Science</div>
-                    <p>Electrical Engineering - Computer Science Technical Breadth</p>
-                    <p>GPA: 3.361</p>
-                    <span class="date-range">September 2012 - June 2016</span>
-                </div>
+            <div class="taskbar-items">
+                <div class="taskbar-btn">Andrew Chan - Resume</div>
             </div>
-
-            <div id="skills" class="section">
-                <h2>Skills</h2>
-                <div class="resume-item">
-                    <h3>Programming Languages & Tools</h3>
-                    <p>Python, Java, C++, JavaScript, HTML/CSS, Sklearn, UML, SysML, UPDM, git</p>
-                </div>
+            <div class="tray">
+                <span id="time-display"></span>
             </div>
-
-            <div id="interests" class="section">
-                <h2>Interests</h2>
-                <div class="resume-item">
-                    <p>Machine Learning, DIY Electronics, Foodie Adventures</p>
-                </div>
-            </div>
-
-            <div id="awards" class="section">
-                <h2>Awards & Certifications</h2>
-                <div class="resume-item">
-                    <p><a href="https://patents.google.com/patent/US12038942B1/en?oq=12038942">MBSE to Graph Database Translator US Patent 12038942</a></p>
-                </div>
-                <div class="resume-item">
-                    <p><a href="https://www.seasoasa.ucla.edu/wp-content/uploads/seasoasa/2016-Commencement-Awards-and-Honors.pdf">Engineering Achievement Award for Student Welfare--leadership in the UCLA IEEE Student Group</a></p>
-                </div>
-            </div>
-
-            <div id="easter-egg">
-                <div class="secret-message">SYSTEM CORE ACCESSED</div>
-                <p>YOU HAVE FOUND THE SECRET LEVEL.</p>
-                <div class="ascii-art">
-      ._____.
-      | .-. |
-      | | | |
-      | "-" |
-      |_____|
-
-    HELLO WORLD
-                </div>
-                <p><a href="#">[RETURN TO MAIN]</a></p>
-            </div>
-
-            <footer>
-                <p style="text-align: center; margin-top: 50px; font-size: 0.8rem; opacity: 0.5;">
-                    TERMINAL SESSION ID: ↑ ↑ ↓ ↓ ← → ← → b a
-                </p>
-            </footer>
-
         </div>
     </div>
-    <canvas id="matrix-canvas"></canvas>
+
     <script>
-        const konamiCode = [
-            'ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown',
-            'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight',
-            'b', 'a'
-        ];
-        let cursor = 0;
-        let isMatrixMode = false;
-
-        // Boot Sequence
-        const bootMessages = [
-            "BIOS DATE 03/31/1999 00:00:00 VER 1.0.0",
-            "CPU: QUANTUM CORE WHITE RABBIT OK",
-            "RAM: 1999 TB OK",
-            "INITIALIZING MODULES...",
-            "LOADING KERNEL...",
-            "MOUNTING FILESYSTEM...",
-            "ESTABLISHING SECURE CONNECTION...",
-            "ACCESS GRANTED.",
-            "WELCOME TO TERMINAL"
-        ];
-
-        async function runBootSequence() {
-            const container = document.getElementById('boot-sequence');
-
-            for (let i = 0; i < bootMessages.length; i++) {
-                const line = document.createElement('div');
-                line.className = 'boot-line';
-                line.textContent = bootMessages[i];
-                container.appendChild(line);
-
-                // Scroll to bottom
-                container.scrollTop = container.scrollHeight;
-
-                // Random delay between lines
-                await new Promise(r => setTimeout(r, Math.random() * 300 + 100));
-            }
-
-            // Add blinking cursor
-            const cursorLine = document.createElement('div');
-            cursorLine.className = 'boot-line';
-            cursorLine.innerHTML = '> PRESS ENTER OR TAP TO START <span class="cursor-blink"></span>';
-            container.appendChild(cursorLine);
-
-            // Wait for user input
-            await new Promise(resolve => {
-                function onInput(e) {
-                    if (e.type === 'click' || e.type === 'touchstart' || (e.type === 'keydown' && e.key === 'Enter')) {
-                        document.removeEventListener('keydown', onInput);
-                        document.removeEventListener('click', onInput);
-                        document.removeEventListener('touchstart', onInput);
-                        resolve();
-                    }
-                }
-                document.addEventListener('keydown', onInput);
-                document.addEventListener('click', onInput);
-                document.addEventListener('touchstart', onInput);
-            });
-
-            // Switch to main content
-            container.style.display = 'none';
-            document.querySelector('.screen-content').style.display = 'block';
-            startTimeUpdate();
-        }
-
-        // Start boot sequence on load
-        window.addEventListener('load', runBootSequence);
-
         function updateTime() {
             const now = new Date();
-            const dateTimeString = now.toLocaleString();
-            document.getElementById('time-display').textContent = dateTimeString;
+            const timeString = now.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+            document.getElementById('time-display').textContent = timeString;
         }
 
         function startTimeUpdate() {
@@ -255,86 +189,10 @@
             setInterval(updateTime, 1000);
         }
 
-        function startMatrixRain(color) {
-            const canvas = document.getElementById('matrix-canvas');
-            const ctx = canvas.getContext('2d');
-
-            canvas.style.display = 'block';
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-
-            const letters = 'アァカサタナハマヤャラワガザダバパイィキシチニヒミリヰギジヂビピウゥクスツヌフムユュルグズブヅプエェケセテネヘメレヱゲゼデベペオォコソトノホモヨョロヲゴゾドボポヴッン0123456789';
-            const fontSize = 16;
-            const columns = canvas.width / fontSize;
-
-            const drops = [];
-            for (let x = 0; x < columns; x++) {
-                drops[x] = 1;
-            }
-
-            let animationId;
-
-            function draw() {
-                ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
-                ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-                ctx.fillStyle = color;
-                ctx.font = fontSize + 'px monospace';
-
-                for (let i = 0; i < drops.length; i++) {
-                    const text = letters.charAt(Math.floor(Math.random() * letters.length));
-                    ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-
-                    if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
-                        drops[i] = 0;
-                    }
-                    drops[i]++;
-                }
-                animationId = requestAnimationFrame(draw);
-            }
-
-            draw();
-
-            // Step 2: Change site color after 2 seconds
-            setTimeout(() => {
-                document.body.classList.toggle('matrix-mode');
-
-                // Reveal easter egg only if enabling matrix mode
-                const egg = document.getElementById('easter-egg');
-                if (document.body.classList.contains('matrix-mode')) {
-                    egg.classList.add('found');
-                    egg.scrollIntoView({ behavior: 'smooth' });
-                }
-
-                // Step 3: Fade out canvas
-                setTimeout(() => {
-                    canvas.style.transition = 'opacity 1s';
-                    canvas.style.opacity = '0';
-
-                    // Cleanup
-                    setTimeout(() => {
-                        cancelAnimationFrame(animationId);
-                        canvas.style.display = 'none';
-                        canvas.style.opacity = '1'; // Reset for next time
-                        canvas.style.transition = ''; // Remove transition
-                    }, 1000);
-                }, 1000);
-            }, 2000);
-        }
-
-        document.addEventListener('keydown', (e) => {
-            if (e.key === konamiCode[cursor]) {
-                cursor++;
-                if (cursor === konamiCode.length) {
-                    const targetColor = isMatrixMode ? '#ffb000' : '#00FF41';
-                    startMatrixRain(targetColor);
-                    isMatrixMode = !isMatrixMode;
-                    cursor = 0;
-                }
-            } else {
-                cursor = 0;
-            }
-        });
+        // Initialize
+        window.onload = function() {
+            startTimeUpdate();
+        };
     </script>
 </body>
 </html>
