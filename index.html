@@ -9,11 +9,15 @@
 </head>
 <body>
     <div class="crt-container">
+        <div class="scan-bar"></div>
         <div id="boot-sequence"></div>
         <div class="screen-content" style="display: none;">
             <div id="system-time">SYSTEM TIME: <span id="time-display"></span></div>
 
             <header>
+                <div class="avatar-frame">
+                    <img src="img/profile1.jpg" alt="Andrew C. Chan">
+                </div>
                 <h1>Andrew C. Chan</h1>
                 <div style="text-align: center;">
                     <p class="subheading">Los Angeles, CA</p>
@@ -239,6 +243,7 @@
             container.style.display = 'none';
             document.querySelector('.screen-content').style.display = 'block';
             startTimeUpdate();
+            initSectionReveal();
         }
 
         // Start boot sequence on load
@@ -253,6 +258,23 @@
         function startTimeUpdate() {
             updateTime();
             setInterval(updateTime, 1000);
+        }
+
+        function initSectionReveal() {
+            const sections = document.querySelectorAll('.section');
+            if (!('IntersectionObserver' in window)) {
+                return;
+            }
+            sections.forEach(s => s.classList.add('reveal-init'));
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('reveal-in');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.12 });
+            sections.forEach(s => observer.observe(s));
         }
 
         function startMatrixRain(color) {
